@@ -1,5 +1,4 @@
-Utils
-=====
+# MuBook Utils
 
 MuBook Utilities
 
@@ -17,8 +16,7 @@ Write down what you have put here.
 - html_parser.py
 
 ```python
-# please change line 9 to the appropriate directory where the parsed subjects
-# are stored on your computer.
-TEMP = "directory/to/where/scrapped/subject/pages/are/on/your/computer/"
+# please change line 9 to the appropriate directory where the parsed subjects are stored on your computer.
+TEMP = "path/to/scrapped/data"
 ```
 =====
