@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import argparse
 import requests
 import os
@@ -58,7 +59,7 @@ def main():
     parser.add_argument('-n', help='task number', type=int, default=10)
     parser.add_argument('-l', help='subject list file', type=open, required=True)
     parser.add_argument('-p', '--prefix', help='url prefix', required=True)
-    parser.add_argument('-o', help='output directory', default='./subjectPages')
+    parser.add_argument('-o', help='output directory', default='./temp')
 
     args = parser.parse_args()
 
