@@ -169,19 +169,6 @@ def process_prereq(processed_subjects):
                 continue
 
 
-def process_nonallowed(processed_subjects):
-    for subject_code in processed_subjects:
-        logging.info("Adding nonallowed for: " + subject_code)
-        s = Subject.objects.get(code=subject_code)
-        for qcode in Processor.nonallowed_code(processed_subjects[subject_code]):
-            try:
-                q = Subject.objects.get(code=qcode)
-                NonallowedSubject.objects.get_or_create(subject=s, non_allowed=q)
-            except:
-                logging.warning("Cannot save non-allowed relationship: " + subject_code + " - " + qcode)
-                continue
-
-
 def clear_old_subjects_relationships():
     logging.info("Clearing old nonallowed relationships")
     NonallowedSubject.objects.all().delete()
@@ -195,9 +182,6 @@ def clear_old_subjects_relationships():
 def update_relationships(processed_subjects):
     logging.info("Adding requisites.")
     process_prereq(processed_subjects)
-
-    logging.info("Adding nonallowed.")
-    process_nonallowed(processed_subjects)
 
     logging.info("Done.")
 
