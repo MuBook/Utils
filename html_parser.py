@@ -91,18 +91,11 @@ class Processor:
         self.prereq = Processor.anchor_regex.sub(r"<\1p>", self.prereq)
 
     def __str__(self):
-        return "Code: " + self.code \
-               + "\n\nName: " + self.name \
-               + "\n\nTitle: " + self.title \
-               + "\n\nCredit Point: " + self.credit \
-               + "\n\nCommencement Date: " + self.commencement_date \
-               + "\n\nCorequisite: " + self.corequisite \
-               + "\n\nTime Commitment: " + self.time_commitment \
-               + "\n\nOverview: " + self.overview \
-               + "\n\nObjectives: " + self.objectives \
-               + "\n\nAssessments: " + self.ass \
-               + "\n\nPrerequisites: " + self.prereq \
-               + "\n\nNonallowed subjects: " + self.nonallowed
+        return json.dumps(
+            { k.replace('_', ' ').title():v for k, v in self.to_dict().items() },
+            indent = 4,
+            separators = (',\n',': ')
+        )
 
     def to_dict(self):
         return {
